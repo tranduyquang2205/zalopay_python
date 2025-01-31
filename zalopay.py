@@ -423,10 +423,10 @@ class Zalopay:
         return
     def transfer_money_bank(self, transfers_info):
             
-            account_number = transfers_info['account_number']
-            amount = transfers_info['amount']
-            description = transfers_info['description']
-            bank_code = transfers_info['bank_code']
+            account_number = transfers_info.account_number
+            amount = transfers_info.amount
+            description = transfers_info.description
+            bank_code = transfers_info.bank_code
 
             get_name_bank = self.get_name_bank_web(account_number, bank_code)
             print(get_name_bank,bank_code,account_number)
