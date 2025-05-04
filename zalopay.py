@@ -157,7 +157,7 @@ class Zalopay:
                                 'balance':int(response['data']['balance'])
                     }}
         else: 
-            return {'code':520 ,'success': False, 'message': 'Unknown Error!','data':response} 
+            return {'code':521 ,'success': False, 'message': 'Unknown Error!','data':response} 
         return response
 
         
@@ -229,11 +229,11 @@ class Zalopay:
         for i in range(page + 1):
             result = self.get_history_v2(limit, page_token)
             if not result or 'data' not in result or 'transactions' not in result['data']:
-                return {'code':520 ,'success': False, 'message': 'Unknown Error!','data':result}
+                return {'code':521 ,'success': False, 'message': 'Unknown Error!','data':result}
             his_list = result["data"]['transactions']
             page_token = result["data"]['next_page_token']
             if not his_list:
-                return {'code':520 ,'success': False, 'message': 'Unknown Error!','data':result} 
+                return {'code':521 ,'success': False, 'message': 'Unknown Error!','data':result} 
             for transaction in his_list:
                 result = self.get_trans_by_tid_web(transaction['trans_id'],transaction['system_type'])
                 list_result = result["data"]['transaction']
